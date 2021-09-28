@@ -1,0 +1,17 @@
+JSP 페이를 어떻게 처리할 것인지 설정 하는 태그
+
+1. 종류
+1) page  - JSP 페이지에대한 정보
+2) include - JSP 페이지의 특정 영역에 다른 문서를 포함(JSP, HTML, 텍스트 ...)
+3) taglib - JSP 페이지에 사용할 태그 라이브러리를 설정 
+
+<%@ page|include|taglib  ...... %>
+<%@ page|include|taglib 속성="값" 속성="값" ..... %>
+
+
+1. page 디렉티브 태그 
+    - contentType -> 문서의 종류(text/html;  text/xml,  application/json ... )
+	- pageEncoding -> "UTF-8"
+	
+	- import -> 자바 패키지의 클래스를 import 
+	- errorPage -> 페이지의 에러가 있으면 이동할 URL을 설정 
