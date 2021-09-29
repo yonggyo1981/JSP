@@ -24,8 +24,40 @@
 				
 				include01.jsp는 나머지 출력 내용을 담아서 버퍼를 비우고 출력, 완료 
 				
+				include 디렉티브 태그와 차이점 
+				include 액션태그 -> 요청 중에 처리가
 				
+				include 디렉티브 -> 번역 중에 처리가 된다.
+				P113 
+3. param  - <jsp:forward /> <jsp:include />
+				
+				<jsp:forward .... >
+					<jsp:param name="속성명" value="속성값.." />
+				</jsp:forward> 
+			
+				1) 단일 forward, include 기능 -> 닫히는 태그(단일)
+				2) 매개변수가 필요한 -> 열고 닫는 태그
+				3) request  - String getParameter("매개변수 이름");
+				
+				java.net.URLEncoder 
+									- encode 
+				
+				java.net.URLDeocder
+									- decode 
+				
+						
 3. useBean  -> 자바빈즈
+	1) 작성한 자바 클래스 로직을 사용할 수 있게 해주는 액션 태그 
+	2) getter, setter 메서드를 가지는 클래스(자바빈즈 클래스)에 특화
+	(모델1, 모델2)
+	3) getter, setter 메서드로 정의한 속성 -> property
+	
+	자바빈즈 클래스
+	1) 기본 생성자 -> 반드시 정의
+	
+	MemberBean 클래스
+	
+	
 4. setProperty
 5. getProperty
-6. param
+
