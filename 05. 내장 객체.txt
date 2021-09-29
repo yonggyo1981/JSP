@@ -90,3 +90,25 @@ response 객체
 
 쿠키 저장 요청 -> 서버 -> 출력 -> 브라우저에서 쿠키 -> 저장
 -> 저장된 쿠키 -> 요청 헤더 -> 서버에서 접근
+
+
+응답 콘텐츠 관련 메서드
+setContentType(String type); // text/html; .. text/xml,, image/png... application/json
+getContentType()
+setCharacterEncoding(String charset);  
+getCharacterEncoding();
+sendError(int statucode, String message);
+setStatus(int statuscode)
+
+
+
+out 내장객체
+	.print
+	.println ---> \r\n -> 줄바꿈 문자가 추가 
+	.newLine() -> \r\n
+	.getBufferSize()
+	.getRemaing()
+	.clear() -> 출력 X -> 버퍼 비우기 -> (이미 비워진 상태에서 clear() -> IOException 발생)
+	.clearBuffer() -> 출력 X -> 버퍼 비우기 (이미 비워진 상태에서 clearBuffer() -> IOException 발생 X)
+	.flush() -> 출력 -> 버퍼를 비운다
+	.autoFlush()
