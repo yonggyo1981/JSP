@@ -57,4 +57,36 @@ request 내장객체
 웹브라우저/서버 관련 메서드
 	
  
+ 속성을 공유할 수 있는 유효범위
+ page
+ request 
+ session 
+ application 
  
+ 
+ 
+ 
+response 객체
+사용자 요청 데이터 -> 서버 -> 가공 -> 브라우저 전송(출력)
+
+1) 페이지 이동 관련 메서드
+	- sendRedirect(String url);
+	
+2) 응답 HTTP 헤더 관련 메서드
+-  addCookie(Cookie cookie) 
+		javax.servlet.http.Cookie;
+	addCooklie(new Cookie("쿠키 키", "쿠키 값"));
+	
+-  addHeader(String name, String value) -> 출력 헤더 추가 
+-  addIntHeader(String name, int value) 
+- addDateHeader(String name, long date);
+- setHeader(String name, String value);
+- setIntHeader(String name, int value);
+- setDateHeader(String name, long date);
+- containsHeader(String name)
+- getHeader(String name);
+
+
+
+쿠키 저장 요청 -> 서버 -> 출력 -> 브라우저에서 쿠키 -> 저장
+-> 저장된 쿠키 -> 요청 헤더 -> 서버에서 접근
