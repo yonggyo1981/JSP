@@ -55,9 +55,21 @@
 	자바빈즈 클래스
 	1) 기본 생성자 -> 반드시 정의
 	
+	com.dto (Data Table Object)
 	MemberBean 클래스
+		- id, name 
+	
+	<jsp:useBean id="참조변수" class="패키지명 포함 클래스" scope="page|request|session|application"/>
+	page - 기본 
 	
 	
-4. setProperty
-5. getProperty
+4. setProperty (settter메서드에 값 지정)
+	<jsp:setProperty name="자바 빈즈 참조 변수" property="속성명" value="값" />
+																	-> setter 메서드 -> 값 지정 
+5. getProperty (getter메서드에 값 지정)
+	<jsp:getProperty name="자바 빈즈 참조 변수" property="속성명" />
+																-> getter 메서드 -> 출력
+
+
+forward, include, param, useBean, setProperty, getProperty
 
