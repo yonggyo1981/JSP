@@ -37,7 +37,7 @@ JSP 페이를 어떻게 처리할 것인지 설정 하는 태그
 
 1) 번역이 될때 include 설정 파일의 내용이 추가
 
-3. taglib 태그(JSTL - JSP Standard Tag libarary)
+3. taglib 태그(JSTL - JSP Standard Tag libarary) 
 JSP -> 자바 코드 사용 지양 
      -> 태그 형식의 추가 편의 기능
 	 ->
@@ -46,7 +46,10 @@ JSP -> 자바 코드 사용 지양
 		sql -> SQL 실행을 도와주는 편의기능 태그 형태로 제공 
 		functions -> 문자열 가공의 편의 기능을 제공 
 	 
-	<%@ taglib uri="경로" prefix="태그 식별자" %>
+	<%@ taglib prefix="태그 식별자" uri="경로" %>
+	
+	JSTL(taglib)는 별도의 라이브러리를 설치
+	
 
 
 

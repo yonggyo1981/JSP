@@ -1,0 +1,31 @@
+어떤 행동을 하도록 명령하는 태그 
+1. forward -> 다른 페이지로 이동하는 흐름 제어	
+				<jsp:forward page="이동할 페이지의 경로" />
+				
+				forward01.jsp  -> 출력 데이터가 버퍼에 샇이다가 
+				
+				forward02.jsp  -> <jsp:forward page="forward02.jsp" /> 만나면 
+										 forward01.jsp로 쌓인 버퍼를 지우고
+										 출력의 주도권이 -> forward02.jsp 넘어가고 
+										 forward02.jsp의 버퍼가 쌓이고 출력이 되고 종료
+				
+				페이지의 URL은 변경 X -> 내용만 forward된 것으로 변경이 된다.
+				
+2. include -> 외부 페이지의 내용을 포함할때(JSP. HTML, 텍스트, 서블릿 페이지)
+				<jsp:include page="포함할 페이지의 경로" />
+				
+				include01.jsp  -> include01 출력 데이터 버퍼에 담기다가 
+				
+				includ02.jsp  -> <jsp:include page="include02.jsp" />만나면 기존 출력 버퍼 삭제 되지 않고
+										-> include02로 출력 제어권이 넘어가고 -> include02의 출력 내용이 
+										기존 버퍼에 추가 
+										-> 출력이 완료 되면 
+										-> 출력 제어권을 다시 include01.jsp로 넘겨 준다
+				
+				include01.jsp는 나머지 출력 내용을 담아서 버퍼를 비우고 출력, 완료 
+				
+				
+3. useBean  -> 자바빈즈
+4. setProperty
+5. getProperty
+6. param
