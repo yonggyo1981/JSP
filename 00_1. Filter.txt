@@ -39,3 +39,11 @@ WEB-INF/web.xml
 
 /board/view - 서블릿 클래스 ViewController - view.jsp
                  - 필터(SiteMain2) 상/하단 -> header2.jsp, footer2.jsp 
+				 
+				 
+jbcrypt.jar
+	- static hashpw  -> 암호화 해시 
+	- static gensalt 
+	- static checkpw -> 해시의 일치 여부
+	
+	
