@@ -1,0 +1,23 @@
+필터
+
+전 
+서블릿 출력 
+후
+
+
+Filter 인터페이스를 구현하면 filter가 된다.
+javax.servlet.Filter
+	 - void init(FilterConfig filterConfig) -> 필터 초기화시 호출 
+     - void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) - 출력 전, 후의 필터 기능 정의 
+	 - void destroy() - 필터 종료 
+	 
+	 
+WEB-INF/web.xml 
+<filter>
+	<filter-name>필터 이름</filter-name>
+	<filter-class>패키지명 포함 클래스명</filter-class>
+</filter>
+<filter-mapping>
+	<filter-name>필터 이름</filter-name>
+	<url-pattern>필터를 적용할 요청 URL 패턴</url-patter>
+</filter-mapping>
