@@ -8,7 +8,7 @@
    jsp(View) 파일로 출력을 해주는 역할
    
 3. 라우팅 경로
-web.xml 
+WEB-INF/web.xml 
 <web-app>
 	<servlet>
 		<servlet-name>서블릿 명칭</servlet-name>
@@ -19,3 +19,16 @@ web.xml
 		<url-pattern>URL 패턴</url-pattern>
 	</servlet-mapping>
 </web-app>
+
+
+4. 액션태그
+<jsp:forward page="..." />
+<jsp:include page="..." />
+
+
+
+javax.servlet.RequestDispatcher
+						.forward(request, response) 
+						.include(request, response)
+						
+request.getRequestDispatcher();
