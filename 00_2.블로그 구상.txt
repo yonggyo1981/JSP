@@ -118,3 +118,12 @@
 				RequestDispatcher .... 
 			}
 		}
+		
+		
+
+SQL 파일로 데이터 백업
+mysqldump -u사용자계정 -p  저장할 데이터베이스명 > 파일명.sql
+
+
+DB로 import 
+mysql -u사용자계정 -p  저장할 데이터베이스명 < 파일명.sql
