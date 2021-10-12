@@ -12,3 +12,51 @@
 	
 	
 	http://localhost:8080/Login/member/join
+	
+	
+	
+소스 설명
+1. URL 
+package com.controller.member
+서블릿
+	- JoinController 
+			- doGet  - 회원 가입 양식(GET)
+			- doPost - 회원 가입 처리(POST)
+				- MemberDao - join(HttpServletRequest request)
+				(회원 가입 처리)
+				 - 회원 가입 실패 -> AlertException -> 오류 안내 
+				 - 회원 가입 성공 -> /member/login 페이지로 이동 
+				
+	- LoginController 
+			- doGet - 로그인 양식(GET)
+			- doPost - 로그인 처리(POST)
+					MemberDao - login(HttpServletRequest request)
+					- 로그인 실패 -> AlertException -> 오류 안내
+					- 로그인 성공 -> 메인 페이지로 이동
+					  (예외가 발생 안하면 -> 성공)
+					  
+					-> 로그인 성공 -> 공통 필터
+					-> 공통필터
+						- 로그인 유지를 위한 로직
+						- 세션에서 memNo가 있으면 
+						- 회원정보를 전역에 유지
+						- request.setAttribute 회원정보를 유지
+					
+	- LogoutController
+			- doGet - 로그아웃 처리(GET)
+				- 세션 비우기 (memNo 삭제 -> 로그아웃)
+				HttpSession session 
+									- invalidate()
+									
+				-> 로그인 페이지로 이동(response.sendRedirect()) -> 헤더에 정의된 페이지 이동
+				
+				response header 
+					- Location : /member/login
+					
+				-> 헤더는 HTML이 출력 되기전에 처리
+				-> HTML이 출력이 되면 더이상 헤더를 조작 할 수 X
+				
+web.xml - 서블릿 URL 설정
+
+
+
