@@ -62,9 +62,19 @@ web.xml - 서블릿 URL 설정
 2. Models 
 	- MemberDao 클래스
 		- init(ServletRequest request) 
-				- 로그인을 한 경우 로그인 정보 유지
+				- 로그인을 한 경우 로그인 정보 유지(session - memNo)
+				-  사이트 전역에 유지 -> 사이트 전역에 해당하는 위치
+				- 전역 필터(/*) - 
+					com.filter.CommonFilter
+						- doFilter 바로 하단에
+						 Member.init(ServletRequest request)
+							
+							
 				- 로그인한 회원정보(member), 로그인 여부(isLogin)
-				- request.setAttribute("member", member);\
+				- request.setAttribute("member", member);
+		
+		 
+		
 		
 		- join(HttpServletRequest request) throws AlertException
 			- 회원 가입 처리
@@ -80,4 +90,29 @@ web.xml - 서블릿 URL 설정
 					
 			2. 검증 완료 -> DB 처리 
 				DB 처리전 비밀번호는 hash 처리(BCrypt 방식)
+				DB 처리 
+					-> 가입 후 바로 로그인 처리 -> 회원번호 필요한 경우?
+					Connection  - prepareStatement(String sql, Statement.RETURN_GENERATED_KEYS));
+					-> 추가시에 추가된 증감 번호(Primary - Auto Increment)
 					
+					PreparedStatment 
+							- ResultSet getGeneratedKeys();
+
+			- login(HttpServletRequest request) 
+			  login(HttpServletRequest request, String memId, String memPw) -> 로그인 계정을 다르게 로그인 하는 경우(관리자)
+				1. 필수 항목 체크(아이디, 비번)
+				2. 아이디로 회원 정보 조회
+				3. 회원정보 있으면 비밀번호 검증
+					BCrypt.checkpw(비밀번호, 해시)
+				4. 아이디, 비번 일치 -> 로그인 처리
+					HttpSession session 
+						- memNo를 저장해서 
+						- 공통 필터에서 회원 정보를 
+						전역 유지 -> 로그인 유지
+						
+						- setAttribute("memNo", memNo);
+						
+				1~4번에 실패하면 
+				AlertException 발생 -> 안내 
+				
+				1~4번 다 통과 -> 로그인 성공
