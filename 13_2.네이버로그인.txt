@@ -25,5 +25,11 @@ Request Header Authorization : Bearer 발급받은 AccessToken
 	
    
    
-   
-http://localhost:8080/LoginSns/naverlogin?code=5whvc2fRr31JNGRBFO&state=1634094477456
+ 
+URL 클래스
+java.net.URL
+ ->웹 통신과 관련된 클래스
+ {"access_token":"AAAAOYmorHW7fDD5DD1-h4Zt3Uh4hZxjfm0-I-NXRHCRmYMGBZXpIY171oM5-Dytclf99JtTaePNC-QxAtZnG89MnyQ","refresh_token":"VipEPARPuVw0mErAiiAtozY7beQMB3yK4JC7h62Jjii3zMPp3gF2iiaQ4bZJHK8eXkPFog2yarA7Snx0RfuB2ipARXXBXyGipUlcOeg1Owrlisa5bJsnxHJSGipzlwPtGtxPncIn","token_type":"bearer","expires_in":"3600"}
+ 
+ 
+ {"response":{"name":"이용교","id":"axzABp6RwS-S4_ya2y0_5YOIfZaE9u-JbRseyLvg358","email":"webnmobile1@gmail.com"},"resultcode":"00","message":"success"}
