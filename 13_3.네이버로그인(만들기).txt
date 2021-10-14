@@ -30,3 +30,141 @@ web.xml
 	
 5. NaverLogin 
 	1) code발급 URL 생성 메서드
+	2) AccessToken 발급받는 메서드
+		1) AccessToken 발급 하는 URL
+		2) state 값을 통한 위변조 체크(세션 - state 값과 URL 형태로 넘어온 state)
+		
+		3) Naver Callback 서블릿에 AccessToken을 발급받는 메서드 호출
+		4) AccessToken을 발급 받는 URL -> 자바 코드에서 HTTP URL 데이터 수신하는 메서드 - 추상클래스(SocialLogin)
+			반환 자료형 void, String 
+		
+		URL - InputStream
+		URLConnection - InputStream getInputStream()
+					- setRequestProperty(String key, String value) - 요청 헤더 등록
+		HttpURLConnection - InputStream
+			- setRequestMethod( ... ) - GET, POST
+			- getResponseCode()
+			- getErrorStream()
+			
+			
+		import java.net.*;
+		import java.io.*;
+		
+		URL url = new URL("https://www.naver.com");
+		
+		HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+		conn.setRequestMethod("GET");
+		
+		InputStream in;
+		if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
+			in = conn.getInputStream();
+		} else {
+			in = conn.getErrorStream();
+		}
+		
+		InputStreamReader isr = new InputStreamReader(in);
+		BufferedReader br = new BufferedReader(isr);
+		
+		StringBuilder sb = new StringBuilder();
+		String line;
+		while((line = br.readLine()) != null) {
+			sb.append(line);
+		}
+		
+		String html = sb.toString();
+		
+		br.close();
+		isr.close();
+		in.close();
+		
+		
+		5) httpRequest - JSON 문자열 -> JSONObject  반환
+		org.json.simple
+				- JSONObject - HashMap 
+				
+		org.json.simple.parser
+			JSONParser 
+				- Object parse(String s) 
+				- JSONObject 형으로 형변환
+				
+		import org.json.simple.parser.*;
+		import org.json.simple.*;
+		
+		JSONParser parser = new JSONParser();
+		JSONObject json = (JSONObject)parser.parse(html);
+		
+		return json;
+		
+		{access_token : ...... }
+		
+		{error : ..... }
+		
+		
+		6) accessToken 받는 메서드 완성
+		String accessToken = null;
+		if (json.containsKey("access_token")) {}
+			accecssToken = (String)json.get("access_token");
+		}
+		
+		return accessToken;
+		
+		7) http요청 메서드(httpRequest) - 헤더를 설정하는 로직
+		HashMap<String, String> reqHeaders
+		
+		if (reqHeaders != null) { // 요청 헤더를 설정한 경우
+			Iterator<String> ir = reqHeaders.keySet().iterator();
+			
+			while(ir.hasNext()) {
+				String key = ir.next();
+				String value = reqHeaders.get(key);
+				conn.setRequestProperty(key, value);
+			}
+		}
+		
+		8) 회원 프로필 조회 메서드 
+			1) API URL + 헤더 -> HTTP 요청 -> JSONObject 반환 
+			String apiURL = "https://openapi.naver.com/v1/nid/me";
+			
+			//Authorization: {토큰 타입] {접근 토큰]
+			HashMap<String, String> headers  = new HashMap<>();
+			headers.put("Authorization", "Bearer " + accessToken);
+			
+			JSONObjet result = httpRequest(apiURL, headers);
+			
+			2) JSONObject 결과값 성공적으로 나왔을때(resultcode - 00)-> HashMap<String, String> usertInfo에 name, id, email ... 회원 데이터를 담아서 반환
+			{"response":{"name":"이용교","id":"vFilVJE01f0ICRx7_rTEw32VBdhCUGYBBA7KQ33l-jw","email":"webnmobile1@gmail.com"},"resultcode":"00","message":"success"}
+			
+			HashMap<String, String> userInfo = null;
+			String resultcode = (String)result.get("resultcode");
+			if (resultcode.equals("00") { // 성공했을 때
+				userInfo = new HashMap<String, String>();
+				
+				JSONObject response = (JSONObject)result.get("response");
+				
+				Iterator<String> ir = response.keySet().iterator();
+				while (ir.hasNext()) {
+					String key = ir.next();
+					String value = (String)response.get(key);
+					userInfo.put(key, value);
+				}
+			}
+			
+			
+			return userInfo;
+			
+			
+6. LoginController - doGet 
+	1) code 발급 URL 메서드 호출  (NaverLogin - getCodeURL(HttpServletRequest request))
+	2) login.jsp에서 code발급 URL을 공유할 수 있도록 속성 값을 추가 - request.setAttribute(...)
+	3) login.jsp에서 code 발급 URL을 가져와서 네이버 로그인 버튼에 링크 - request.getAttribute()
+
+
+7. member 테이블 
+		소셜 로그인으로 가입한 회원인지 여부를 체크할 수 있는 속성
+		socialChannel - ENUM('none', 'Naver', 'Kakao') DEFAULT 'none'
+		socialId - 
+		
+		ALTER TABLE member ADD socialId VARCHAR(65) AFTER memNm;
+		ALTER TABLE member ADD socialChannel ENUM('none', 'Naver', 'Kakao') DEFAULT 'none' AFTER memNm;
+		
+8. /naverlogin - NaverLoginController - doGet
