@@ -1,0 +1,32 @@
+Client ID  - xnLcz5tulL1JdPH1_V5D
+Client Secret  - xFihj7qxhw
+Callback URL  - http://localhost:8080/LoginSns2/naverlogin
+
+
+1. 서블릿 
+/main 
+	- 출력 부분 jsp 연결
+
+
+/naverlogin 
+
+web.xml
+
+2. 공통 필터
++ web.xml <-- 네이버 Client 계정, Callback URL 설정 추가
+
+
+3. SocialLogin 추상 클래스 
+	정의할 추상 메서드
+	1) code 발급 URL -> 버튼 링크 
+	2) access token 발급
+	3) 회원 프로필 조회
+	
+4. SocialLogin을 상속받은 NaverLogin 클래스 
+	1) 추상 메서드로 정의된 부분 추가
+	2) 정적 멤버 변수  -> 네이버 Client Id, Client Secret, Callback 
+	3) 공통 필터에서 설정할수 있는 정적 메서드
+	4) 공통 필터에서 설정값을 가져와서 설정
+	
+5. NaverLogin 
+	1) code발급 URL 생성 메서드
