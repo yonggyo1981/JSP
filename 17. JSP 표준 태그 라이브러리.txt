@@ -41,3 +41,14 @@ Sql 태그
 <sql:query> -> 조회 쿼리문을 실행할때 사용(SELECT ....)
 <sql:update> -> 추가, 수정, 삭제(INSERT, UPDATE, DELETE) 쿼리문을 실행할때
 <sql:param> -> 쿼리문의 데이터 바인딩
+<sql:dateParam> -> 쿼리문의 데이터 바인딩(Date 형식)
+
+Functions 태그
+	constains(...) 
+	constainsIgnoreCase(....) - 대소문자 구분없이 문자열의 포함 여부
+	startsWith(....) -> 지정된 문자열로 시작하는지 여부
+	endsWith(...) -> 지정된 문자열로 끝나는지 여부
+	indexOf(...) -> 문자열이 포함된 위치 값을 반환, 없으면 -1
+	spilt(...) -> 문자열 분해
+	join(...) -> 문자열 결합
+	length() -> 문자열의 길이
