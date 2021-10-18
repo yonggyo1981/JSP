@@ -52,3 +52,10 @@ Functions 태그
 	spilt(...) -> 문자열 분해
 	join(...) -> 문자열 결합
 	length() -> 문자열의 길이
+	substring(문자열, s, e) -> 문자열을 s번째 이상 e번째 미만
+	substringAfter(...) -> 문자열 이후 문자를 반환
+	substringBefore(...) -> 문자열 이전 문자를 반환
+	replace(문자열, 변경될 문자열, 변경할 문자형)
+	toUpperCase() -> 대문자
+	toLowerCase() -> 소문자
+	trim() -> 문자열 앞뒤의 공백
