@@ -1,0 +1,15 @@
+web.xml 
+<security-role>
+	<role-name>role1</role-name>
+</security-role>
+<security-contraint>
+	<web-resource-collection> - 접근할수 있는 웹자원에 대한 설정
+		<web-resource-name>접근 자원의 이름</web-resource-name>
+		<url-pattern>/admin/*</url-pattern>
+		<http-method>GET/POST</http-method>
+	</web-resource-collection>
+	<auth-constraint>
+		<description>설명</description>
+		<role-name>role1</role-name>
+	</auth-constraint>
+</security-constraint>
