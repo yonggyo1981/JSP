@@ -13,3 +13,20 @@ web.xml
 		<role-name>role1</role-name>
 	</auth-constraint>
 </security-constraint>
+<login-config>
+	<auth-method>BASIC/FORM</auth-method>
+	<realm-name></realm-name>
+	<form-login-config>
+		<form-login-page>로그인 양식</form-login-page>
+		<form-error-page>로그인 인증 실패시</form-error-page>
+	</form-login-config>
+</login-config>
+
+Form  인증 
+<form action="j_security_check" method="post">
+	아이디 : <input type="text" name="j_username">
+	비밀번호 : <input type="password" name="j_password">
+</form>
+
+P344 - 프로그래밍 적 시큐리티
+10-10
