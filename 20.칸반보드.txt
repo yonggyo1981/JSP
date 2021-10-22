@@ -15,3 +15,5 @@ java.util.StringTokenizer
 		/findid - 아이디 찾기
 		/findpw - 비밀번호 찾기
 		
+		
+		aA!12345
