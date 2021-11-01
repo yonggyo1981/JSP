@@ -19,3 +19,20 @@ java.util.StringTokenizer
 		내일 부터 
 		오전 -> JSP 
 		오후 - vue.js  - node.js - 하이브리드 앱 - 자바스크립트(+제이쿼리)
+		
+네이버 로그인 
+REST API(Application Programming Interface)
+
+oAuth
+1. 인증 코드 
+	URL에 clientId, Callback URL에 포함하여 링크 -> 네이버 쪽 callbackURL + 인증 코드(code)
+	
+2. code -> AccessToken을 발급(clientid + secret)
+	(유효시간)
+	- 서비스 접근 
+	
+3. 발급받은 AccessToken을 이용하여 회원프로필조회 API 호출 -> 
+4. 회원가입, 로그인 
+
+
+java.net.URL
