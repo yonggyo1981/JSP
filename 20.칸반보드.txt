@@ -36,3 +36,9 @@ oAuth
 
 
 java.net.URL
+
+
+URLConnection - InputStream  - getInputStream()
+						OutputStream  - getOutputStream()
+						
+POST - Content-Type : Application/x-www-form-urlencoded
