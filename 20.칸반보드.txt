@@ -42,3 +42,27 @@ URLConnection - InputStream  - getInputStream()
 						OutputStream  - getOutputStream()
 						
 POST - Content-Type : Application/x-www-form-urlencoded
+
+자바스크립트 코어(ES6+)
+브라우저 객체모델 (브라우저에만 있는 객체)
+window
+	location
+	history
+	navigator 
+	screen
+	document
+
+
+1. 아이디 속성(id)
+document.getElementById("아이디명")
+
+2. 클래스 속성(class)
+document.getElementsClassName("클래스명");
+
+3. 태그명
+document.getElementsByTagName("태그명");
+
+4. CSS 선택자
+document.querySelector("CSS 선택자"); -> 1개만 선택 
+document.querySelectorAll("CSS 선택자"); -> 복수 선택 
+
